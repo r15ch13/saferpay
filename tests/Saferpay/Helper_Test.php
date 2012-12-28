@@ -15,4 +15,9 @@ class HelperTest extends \PHPUnit_Framework_TestCase
         $attributes = Helper::parseResponseXml('<bla bla="qwe" />a');
         $this->assertEquals($attributes, array());
     }
+
+    public function testCurlPhpExtensionIsLoaded()
+    {
+        $this->assertTrue(extension_loaded('curl'));
+    }
 }
