@@ -1,0 +1,26 @@
+{
+    "name": "r15ch13/saferpay",
+    "version": "1.0.0-alpha1",
+    "license": "MIT",
+    "type": "library",
+    "description": "qwe",
+    "keywords": ["saferpay", "payment", "gateway"],
+    "homepage": "https://github.com/r15ch13/saferpay",
+    "authors": [
+        {
+            "name": "Richard Kuhnt",
+            "email": "r15ch13+git@gmail.com",
+            "homepage": "http://r15ch13.de",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "lib-curl": ">=7.24.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Saferpay" : "src/"
+        }
+    }
+}
