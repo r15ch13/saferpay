@@ -12,5 +12,7 @@ Icon
 
 # Composer vendors
 vendor
+composer.phar
+composer.lock
 
 doc

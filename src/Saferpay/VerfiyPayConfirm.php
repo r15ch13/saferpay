@@ -17,6 +17,6 @@ class VerfiyPayConfirm extends Request
         // OK:RESULT=63&CARDREFID=
         // ERROR: An Error occurred.
         $this->execute();
-        return Helper::string_starts_with('OK:', $this->result);
+        return Helper::starts_with($this->result, 'OK:');
     }
 }

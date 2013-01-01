@@ -60,7 +60,11 @@ abstract class Request
 
     public function getErrors()
     {
-        //return curl_errno($this->ch).": ".curl_error($this->ch);
+        if(is_resource($this->ch)) {
+            return curl_error($this->ch) . '(' . curl_errno($this->ch) . ')';
+        } else {
+            return 'no valid curl resource';
+        }
     }
 
 

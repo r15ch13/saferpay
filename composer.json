@@ -3,7 +3,7 @@
     "version": "1.0.0-alpha1",
     "license": "MIT",
     "type": "library",
-    "description": "qwe",
+    "description": "Saferpay library",
     "keywords": ["saferpay", "payment", "gateway"],
     "homepage": "https://github.com/r15ch13/saferpay",
     "authors": [
@@ -15,7 +15,8 @@
         }
     ],
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=5.3.0",
+        "illuminate/support": "1.2.*@dev"
     },
     "autoload": {
         "psr-0": {
