@@ -22,7 +22,7 @@ class VerfiyPayConfirm extends Request
         if(starts_with($this->result, 'OK:')) {
             return true;
         } else {
-            throw new PayInitErrorException($this->result);
+            throw new VerfiyPayConfirmErrorException($this->result);
         }
     }
 }
