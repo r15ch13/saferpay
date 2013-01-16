@@ -6,6 +6,7 @@ abstract class Request
     protected $data = array();
     protected $method = 'get';
     protected $result = null;
+    protected $response = null;
     private $ch = null;
 
     public function getData($attribute)
@@ -67,5 +68,8 @@ abstract class Request
         }
     }
 
+    public function result() {
+        return $this->result;
+    }
 
 }

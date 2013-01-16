@@ -1,5 +1,7 @@
 <?php namespace Saferpay;
 
+class VerfiyPayConfirmErrorException extends \Exception {}
+
 class VerfiyPayConfirm extends Request
 {
     public function __construct($data, $signature)
@@ -17,6 +19,10 @@ class VerfiyPayConfirm extends Request
         // OK:RESULT=63&CARDREFID=
         // ERROR: An Error occurred.
         $this->execute();
-        return Helper::starts_with($this->result, 'OK:');
+        if(starts_with($this->result, 'OK:')) {
+            return true;
+        } else {
+            throw new PayInitErrorException($this->result);
+        }
     }
 }
