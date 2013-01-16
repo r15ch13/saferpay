@@ -94,7 +94,7 @@ class RegisterCard extends Request
         if(empty($this->data['faillink'])) throw new InvalidRegisterCardDataException('Faillink can not be empty.');
         if(empty($this->data['cardrefid'])) throw new InvalidRegisterCardDataException('Card Ref. Id can not be empty.');
 
-        parent::execute();
+        return parent::execute();
     }
 
     public static function create() {

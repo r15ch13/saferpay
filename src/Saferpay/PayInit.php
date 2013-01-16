@@ -243,7 +243,7 @@ class PayInit extends Request
         if(empty($this->data['faillink'])) throw new InvalidPayInitDataException('Faillink can not be empty.');
         if(empty($this->data['backlink'])) throw new InvalidPayInitDataException('Backlink can not be empty.');
 
-        parent::execute();
+        return parent::execute();
     }
 
     public static function create() {
