@@ -1,6 +1,7 @@
 <?php namespace Saferpay;
 
 class InvalidPayCompleteDataException extends \Exception {}
+class PayCompleteErrorException extends \Exception {}
 
 class PayComplete extends Request
 {
@@ -82,5 +83,15 @@ class PayComplete extends Request
 
     public static function create() {
         return new self;
+    }
+
+    public function ok() {
+        // ERROR: An Error occurred.
+        $this->execute();
+        if($this->result == 'OK') {
+            return true;
+        } else {
+            throw new PayCompleteErrorException($this->result);
+        }
     }
 }
