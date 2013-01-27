@@ -1,4 +1,4 @@
-<?php namespace Saferpay;
+<?php namespace Saferpay\Request;
 
 class FileImport extends Request
 {

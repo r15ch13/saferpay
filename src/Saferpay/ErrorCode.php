@@ -54,14 +54,14 @@ class ErrorCode
         7004 => 'Card reference number not found in database.',
         7005 => 'Missing attribute in registration request',
         7006 => 'Card reference number already existing in database',
-        7007 => 'Unknown Error'
+        7007 => 'Unknown Error',
     );
 
     public static function getMessage($code) {
         if(isset(self::$error_code[$code])) {
             return self::$error_code[$code];
         } else {
-            return 'Unknown Error';
+            return 'Unknown Error Code: '.$code;
         }
     }
 }

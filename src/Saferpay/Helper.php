@@ -29,8 +29,7 @@ class Helper
         if($xml && $xml = @simplexml_load_string($xml)) {
             $data = (array)$xml->attributes();
             return $data['@attributes'];
-        } else {
-            return array();
         }
+        return array();
     }
 }

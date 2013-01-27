@@ -1,20 +1,15 @@
 <?php namespace Saferpay;
 
-abstract class Response
+use Saferpay\Request\VerfiyPayConfirm;
+
+class ResponseException extends \Exception {}
+
+class Response
 {
     private $data = null;
     private $raw_data = null;
     private $signature = '';
     private $verify;
-
-    public function getData($attribute)
-    {
-        if(isset($this->data[$attribute]))
-            return $this->data[$attribute];
-        return null;
-    }
-
-    // <IDP MSGTYPE="InsertCardResponse" KEYID="1-0" RESULT="7000" SCDRESULT="7000" SCDDESCRIPTION="An error occurred" DESCRIPTION="An error occurred" CARDREFID="" LIFETIME="" ACCOUNTID="99867-94913159" />
 
     public function __construct($data, $signature = '')
     {
@@ -26,8 +21,7 @@ abstract class Response
         $this->signature = $signature;
     }
 
-    public function __get($attribute)
-    {
+    public function get($attribute) {
         $attribute = strToLower($attribute);
         if(isset($this->data[$attribute])) {
             return $this->data[$attribute];
@@ -37,7 +31,16 @@ abstract class Response
 
     public function verify()
     {
+        if(!is_null($this->verify)) return $this->verify->getResponse();
+        if(empty($this->signature)) return false;
+
         $this->verify = new VerfiyPayConfirm($this->raw_data, $this->signature);
-        return $this->verify->ok();
+        return $this->verify->getResponse();
+    }
+
+    public function isOk() {
+        if(is_null($this->get('result'))) return false;
+        if(is_numeric($this->get('result')) && $this->get('result') == 0) return true;
+        return false;
     }
 }
