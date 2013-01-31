@@ -26,6 +26,7 @@ class Helper
 
     public static function parseResponseXml($xml)
     {
+        libxml_use_internal_errors(true);
         if($xml && $xml = @simplexml_load_string($xml)) {
             $data = (array)$xml->attributes();
             return $data['@attributes'];
