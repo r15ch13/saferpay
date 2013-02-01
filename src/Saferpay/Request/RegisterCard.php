@@ -10,15 +10,13 @@ class RegisterCard extends Request
             'successlink' => '',
             'faillink' => '',
             'cardrefid' => $cardrefid,
-            'lifetime' => '',
             'langid' => 'en',
-            'redirectmessage' => '',
         ));
         $this->url = 'https://www.saferpay.com/hosting/CreatePayInit.asp';
         $this->method = 'get';
     }
 
-    public static function create() {
-        return new self;
+    public static function create($salt = '') {
+        return new self(array(), $salt);
     }
 }
