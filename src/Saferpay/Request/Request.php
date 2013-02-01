@@ -106,9 +106,10 @@ abstract class Request
         $msg = trim($msg);
         if(empty($msg)) return null;
 
-        if(Helper::parseResponseXml($msg) === array()) {
+        if(!starts_with($msg, '<') && !ends_with($msg, '/>')) {
             return new Response('<IDP result="'. ($this->hasError() ? 7007 : 0) .'" message="'.htmlentities($msg).'"/>');
+        } else {
+            return new Response($msg);
         }
-        return new Response($msg);
     }
 }
