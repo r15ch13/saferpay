@@ -84,15 +84,15 @@ abstract class Request
     }
 
     public function isOk() {
-        return starts_with($this->result(), 'OK');
+        return Helper::starts_with($this->result(), 'OK');
     }
 
     public function hasError() {
-        return starts_with($this->result(), 'ERROR');
+        return Helper::starts_with($this->result(), 'ERROR');
     }
 
     public function ok() {
-        if(starts_with($this->result(), 'OK')) {
+        if(Helper::starts_with($this->result(), 'OK')) {
             $response = new Response(ltrim($this->result(), 'OK:'));
             return $response->ok();
         }
@@ -106,7 +106,7 @@ abstract class Request
         $msg = trim($msg);
         if(empty($msg)) return null;
 
-        if(!starts_with($msg, '<') && !ends_with($msg, '/>')) {
+        if(!Helper::starts_with($msg, '<') && !Helper::ends_with($msg, '/>')) {
             return new Response('<IDP result="'. ($this->hasError() ? 7007 : 0) .'" message="'.htmlentities($msg).'"/>');
         } else {
             return new Response($msg);

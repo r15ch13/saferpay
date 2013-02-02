@@ -2,12 +2,28 @@
 
 class Helper
 {
-    public static function string_starts_with($needle, $haystack) {
-        return !strncmp($haystack, $needle, strlen($needle));
+    /**
+     * Determine if a given string ends with a given needle.
+     *
+     * @param string $haystack
+     * @param string $needle
+     * @return bool
+     */
+    public static function ends_with($haystack, $needle)
+    {
+        return $needle == substr($haystack, strlen($haystack) - strlen($needle));
     }
 
-    public static function string_ends_with($needle, $haystack) {
-        return substr($haystack, -strlen($needle)) === $needle;
+    /**
+     * Determine if a string starts with a given needle.
+     *
+     * @param  string  $haystack
+     * @param  string  $needle
+     * @return bool
+     */
+    public static function starts_with($haystack, $needle)
+    {
+        return strpos($haystack, $needle) === 0;
     }
 
     public static function appendParamsToUrl($url, array $params)
